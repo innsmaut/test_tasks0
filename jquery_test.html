@@ -40,7 +40,7 @@
 <script>
     function transpose() {
         var tableTagList = $("table");
-        for (var i=0; i<1; i++){
+        for (var i=0; i<tableTagList.length; i++){
             var table = tableTagList[i];
             var contents = [];
             var newContents = new Array;
@@ -73,7 +73,6 @@
 
     function rotateTable(contents, newContents) {
         for (row in contents){
-            //console.dir(contents[row]);
             for (num in contents[row]){
                 newContents[num][row] = contents[row][num];
             }
@@ -81,7 +80,16 @@
     }
 
     function buildTable(table, newContents) {
-
+        $(table).empty();
+        for (row in newContents){
+            var tr = document.createElement("tr");
+            for (num in newContents[row]){
+                    var td = document.createElement("td");
+                    td.innerHTML = newContents[row][num];
+                    tr.appendChild(td);
+            }
+            $(table).append(tr);
+        }
     }
 </script>
 </body>
