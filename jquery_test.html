@@ -43,7 +43,7 @@
         for (var i=0; i<tableTagList.length; i++){
             var table = tableTagList[i];
             var contents = [];
-            var newContents = new Array;
+            var newContents = [];
             readTable(table, contents, newContents);
             rotateTable(contents, newContents);
             buildTable(table, newContents);
@@ -63,7 +63,7 @@
 
         //make empty array
         for (var k1=0; k1<k; k1++){
-            var values = new Array;
+            var values = [];
             for (var j1=0; j1<j; j1++){
                 values.push('');
             }
