@@ -3,8 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-<table></table>
+<table>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+</table>
+<button id="button" onclick="transpose()">Transpose</button>
+<script>
+    function transpose() {
+        var tableTagList = $("table");
+        for (var i=0; i<1; i++){
+            var table = tableTagList[i];
+            var contents = [];
+            var newContents = new Array;
+            readTable(table, contents, newContents);
+            rotateTable(contents, newContents);
+            buildTable(table, newContents);
+        }
+    }
+
+    function readTable(table, contents, newContents) {
+        rows = table.children[0].children;
+        for (var j=0; j<rows.length; j++){
+            var contentRow = [];
+            var row = rows[j].children;
+            for (var k=0; k<row.length; k++){
+                contentRow[k] = row[k].innerHTML;
+            }
+            contents[j] = contentRow;
+        }
+
+        //make empty array
+        for (var k1=0; k1<k; k1++){
+            var values = new Array;
+            for (var j1=0; j1<j; j1++){
+                values.push('');
+            }
+            newContents.push(values);
+        }
+    }
+
+    function rotateTable(contents, newContents) {
+        for (row in contents){
+            //console.dir(contents[row]);
+            for (num in contents[row]){
+                newContents[num][row] = contents[row][num];
+            }
+        }
+    }
+
+    function buildTable(table, newContents) {
+
+    }
+</script>
 </body>
 </html>
